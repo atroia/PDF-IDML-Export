@@ -192,7 +192,11 @@ function sigCheck() {
   var sigMod = 0;
   // var pageCount = d.pages.length;
   if (pageCount >= 32) {
-    sigMod = 16;
+    if (pageCount % 8 == 0) {
+      sigMod = 8;
+    } else if (pageCount % 8 !== 0){
+      sigMod = 16;
+    }
   } else if (pageCount < 32 && pageCount > 3) {
     sigMod = 8;
   } else {
